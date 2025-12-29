@@ -532,3 +532,62 @@ html, body {
 @supports (overflow-x: clip) {
   html, body { overflow-x: clip; }
 }
+
+
+/* ---------- Mobile Nav (Professional) ---------- */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  box-shadow: 0 4px 14px rgba(2, 6, 23, 0.06);
+  cursor: pointer;
+}
+
+.nav-toggle:hover { background: rgba(15, 23, 42, 0.03); }
+
+.nav-menu[hidden] { display: none; }
+
+@media (max-width: 839px) {
+  .nav-links { display: grid; gap: 10px; }
+  .nav-cta { display: grid; gap: 10px; }
+
+  .nav-menu {
+    position: absolute;
+    inset-inline: 12px;
+    top: 64px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 14px;
+  }
+
+  .nav-links a {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    color: var(--text);
+    font-weight: 800;
+  }
+  .nav-links a:hover {
+    background: rgba(15, 23, 42, 0.03);
+    border-color: var(--border);
+  }
+
+  .site-header { position: sticky; }
+  .nav { position: relative; }
+
+  /* Hide desktop link row behavior on mobile (we use dropdown instead) */
+  .nav-links { color: var(--text); }
+}
+
+@media (min-width: 840px) {
+  .nav-toggle { display: none; }
+  .nav-menu { display: flex; align-items: center; gap: 18px; }
+  .nav-menu[hidden] { display: flex; } /* keep menu visible on desktop */
+}

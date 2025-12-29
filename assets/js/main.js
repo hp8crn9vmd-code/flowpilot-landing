@@ -11,6 +11,67 @@
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
+  // Mobile Nav toggle (accessible)
+  const navToggle = document.querySelector(".nav-toggle");
+  const navMenu = document.getElementById("nav-menu");
+
+  function closeMenu() {
+    if (!navToggle || !navMenu) return;
+    navMenu.hidden = true;
+    navToggle.setAttribute("aria-expanded", "false");
+  }
+
+  function openMenu() {
+    if (!navToggle || !navMenu) return;
+    navMenu.hidden = false;
+    navToggle.setAttribute("aria-expanded", "true");
+  }
+
+  function toggleMenu() {
+    if (!navToggle || !navMenu) return;
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    expanded ? closeMenu() : openMenu();
+  }
+
+  if (navToggle && navMenu) {
+    // On desktop, keep menu visible; on mobile start closed
+    const mq = window.matchMedia("(min-width: 840px)");
+    const sync = () => {
+      if (mq.matches) {
+        navMenu.hidden = false;
+        navToggle.setAttribute("aria-expanded", "false");
+      } else {
+        closeMenu();
+      }
+    };
+    sync();
+    mq.addEventListener?.("change", sync);
+
+    navToggle.addEventListener("click", toggleMenu);
+
+    // Close on outside click (mobile)
+    document.addEventListener("click", (e) => {
+      if (mq.matches) return;
+      const t = e.target;
+      if (!t) return;
+      if (navMenu.contains(t) || navToggle.contains(t)) return;
+      closeMenu();
+    });
+
+    // Close on ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeMenu();
+    });
+
+    // Close when clicking a nav link
+    navMenu.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener("click", () => {
+        if (!mq.matches) closeMenu();
+      });
+    });
+  }
+
+
   // Lead form
   const form = document.querySelector(".lead-form");
   const statusEl = document.querySelector(".form-status");
