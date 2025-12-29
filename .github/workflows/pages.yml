@@ -1,0 +1,50 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Generate runtime config from GitHub Secret (not committed)
+      - name: Generate runtime-config.js
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/js
+          cat > assets/js/runtime-config.js <<'EOF'
+          /* Runtime config (generated in GitHub Actions; NOT committed) */
+          window.__WEB3FORMS_KEY__ = "${{ secrets.WEB3FORMS_KEY }}";
+          EOF
+
+      # Upload the site as an artifact (index.html must be at artifact root)
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
