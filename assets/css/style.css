@@ -817,3 +817,20 @@ h2 {
 }
 
 .btn:active { transform: translateY(1px); }
+
+/* ---------- Pro widescreen: better use of large displays ---------- */
+:root { --container: 1120px; }
+
+/* ensure true centering even on browsers with partial logical-props quirks */
+.container, .nav {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* widen layout on big screens */
+@media (min-width: 1440px) {
+  :root { --container: 1240px; }
+}
+@media (min-width: 1680px) {
+  :root { --container: 1320px; }
+}
