@@ -772,3 +772,48 @@ h2 {
   .mock-sidebar{ display:none; }
   .mock-cards{ grid-template-columns: 1fr; }
 }
+
+
+/* ---------- Pro polish: header/cards/links ---------- */
+.site-header.is-scrolled {
+  box-shadow: 0 14px 34px rgba(2, 6, 23, 0.08);
+  background: rgba(248, 250, 252, 0.92);
+}
+
+.nav-links a,
+.footer-links a,
+.footer-social a {
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-links a {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.nav-links a.is-active {
+  color: var(--text);
+  background: rgba(37, 99, 235, 0.10);
+  border-color: rgba(37, 99, 235, 0.18);
+}
+
+.card {
+  transition: transform 0.12s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(2, 6, 23, 0.10);
+  border-color: rgba(148, 163, 184, 0.55);
+}
+
+.btn {
+  transition: transform 0.08s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  box-shadow: 0 12px 26px rgba(2, 6, 23, 0.10);
+}
+
+.btn:active { transform: translateY(1px); }

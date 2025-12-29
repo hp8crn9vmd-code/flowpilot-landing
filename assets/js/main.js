@@ -151,3 +151,50 @@
     }
   });
 })();
+
+
+  /* Pro polish: header shadow + active section */
+  const header = document.querySelector(".site-header");
+
+  // Header shadow on scroll
+  const syncHeader = () => {
+    if (!header) return;
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    header.classList.toggle("is-scrolled", y > 8);
+  };
+  syncHeader();
+  window.addEventListener("scroll", syncHeader, { passive: true });
+
+  // Active section link highlighting
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const sections = navLinks
+    .map(a => document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    navLinks.forEach(a => a.classList.toggle("is-active", a.getAttribute("href") === "#" + id));
+  };
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const io = new IntersectionObserver((entries) => {
+      // pick the most visible intersecting section
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => (b.intersectionRatio - a.intersectionRatio))[0];
+      if (visible && visible.target && visible.target.id) setActive(visible.target.id);
+    }, { root: null, threshold: [0.2, 0.35, 0.5, 0.65] });
+
+    sections.forEach(sec => io.observe(sec));
+  } else if (sections.length) {
+    // Fallback: simple scroll spy
+    const onScrollSpy = () => {
+      const y = (window.scrollY || 0) + 120;
+      let current = sections[0];
+      for (const s of sections) {
+        if (s.offsetTop <= y) current = s;
+      }
+      if (current && current.id) setActive(current.id);
+    };
+    onScrollSpy();
+    window.addEventListener("scroll", onScrollSpy, { passive: true });
+  }
