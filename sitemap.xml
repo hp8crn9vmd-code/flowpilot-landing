@@ -6,4 +6,10 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://hp8crn9vmd-code.github.io/flowpilot-landing/en/</loc>
+    <lastmod>2025-12-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
