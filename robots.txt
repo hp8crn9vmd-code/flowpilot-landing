@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hp8crn9vmd-code.github.io/flowpilot-landing/sitemap.xml

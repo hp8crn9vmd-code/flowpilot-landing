@@ -27,16 +27,36 @@
   <!-- Preload (placeholders for later) -->
   <link rel="preload" href="assets/css/style.css" as="style" />
   <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FlowPilot",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "FlowPilot helps small teams manage projects, track time, and share client updates in one clean workspace.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "14-day free trial"
+    }
+  }
+  </script>
+
 </head>
 
 <body>
+  <div id="top" hidden></div>
   <!-- Skip link (Accessibility) -->
   <a class="skip-link" href="#main">تخطي إلى المحتوى</a>
 
   <!-- Header -->
   <header class="site-header" role="banner">
     <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="#" aria-label="FlowPilot Home">
+      <a class="brand" href="#top" aria-label="FlowPilot Home">
         <span class="brand-mark" aria-hidden="true">✈️</span>
         <span class="brand-name">FlowPilot</span>
       </a>
@@ -286,6 +306,65 @@
     </section>
   </main>
 
+  
+    <!-- Privacy -->
+    <section id="privacy" class="section legal" aria-label="Privacy policy">
+      <div class="container">
+        <h2>سياسة الخصوصية</h2>
+        <p class="section-lead">
+          نحترم خصوصيتك. نستخدم بياناتك فقط للتواصل بشأن التجربة المجانية/الديمو وتحسين الخدمة.
+        </p>
+
+        <div class="cards-grid">
+          <article class="card">
+            <h3>ما الذي نجمعه؟</h3>
+            <p>الاسم، البريد الإلكتروني، اسم الشركة/الفريق، وحجم الفريق. وقد نجمع بيانات استخدام عامة (تحليلات) لتحسين التجربة.</p>
+          </article>
+          <article class="card">
+            <h3>كيف نستخدمه؟</h3>
+            <p>لتفعيل التجربة المجانية، التواصل معك، وتحسين الأداء/المحتوى. لا نبيع بياناتك لأي طرف ثالث.</p>
+          </article>
+          <article class="card">
+            <h3>الكوكيز والتحليلات</h3>
+            <p>قد نستخدم أدوات تحليل (مثل GA4) لقياس الزيارات والأحداث. يمكنك تعطيل الكوكيز من إعدادات المتصفح.</p>
+          </article>
+        </div>
+
+        <p class="fineprint">
+          للاستفسار: <a href="mailto:support@flowpilot.app">support@flowpilot.app</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Terms -->
+    <section id="terms" class="section legal" aria-label="Terms of service">
+      <div class="container">
+        <h2>الشروط والأحكام</h2>
+        <p class="section-lead">
+          باستخدامك لهذه الصفحة أو طلب التجربة، أنت توافق على الشروط التالية بشكل مبسط وواضح.
+        </p>
+
+        <div class="cards-grid">
+          <article class="card">
+            <h3>الاستخدام</h3>
+            <p>لا تستخدم الخدمة لأي نشاط غير قانوني أو يضر بالآخرين. أي إساءة استخدام قد تؤدي لإيقاف الوصول.</p>
+          </article>
+          <article class="card">
+            <h3>التجربة المجانية</h3>
+            <p>التجربة مجانية لمدة 14 يوم. قد تختلف الميزات حسب الخطة مستقبلاً. لا يوجد التزام خلال التجربة.</p>
+          </article>
+          <article class="card">
+            <h3>إخلاء المسؤولية</h3>
+            <p>نقدم الخدمة “كما هي” مع أفضل الجهود لضمان الاستقرار. لا نضمن نتائج محددة (مثل زيادة المبيعات) لأن ذلك يعتمد على استخدامك.</p>
+          </article>
+        </div>
+
+        <p class="fineprint">
+          آخر تحديث: <span class="legal-date">2025-12-29</span>
+        </p>
+      </div>
+    </section>
+
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-grid">
       <div class="footer-brand">
@@ -294,15 +373,15 @@
       </div>
 
       <div class="footer-links" aria-label="Footer links">
-        <a href="#" aria-label="Privacy Policy">سياسة الخصوصية</a>
-        <a href="#" aria-label="Terms of Service">الشروط</a>
-        <a href="#" aria-label="Contact email">support@flowpilot.app</a>
+        <a href="#privacy" aria-label="Privacy Policy">سياسة الخصوصية</a>
+        <a href="#terms" aria-label="Terms of Service">الشروط</a>
+        <a href="mailto:support@flowpilot.app" aria-label="Contact email">support@flowpilot.app</a>
       </div>
 
       <div class="footer-social" aria-label="Social links">
-        <a href="#" aria-label="Twitter">Twitter</a>
-        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-        <a href="#" aria-label="YouTube">YouTube</a>
+        <a href="https://x.com/flowpilotapp" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>
+        <a href="https://www.linkedin.com/company/flowpilotapp" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+        <a href="https://www.youtube.com/@flowpilotapp" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
       </div>
     </div>
   </footer>  <script src="assets/js/runtime-config.js" defer></script>
